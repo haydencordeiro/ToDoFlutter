@@ -1,5 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:todotrial/api/firebase_api.dart';
 import 'package:todotrial/models/todo.dart';
 import 'package:todotrial/pages/drawer.dart';
 
@@ -9,13 +11,29 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final todos = [
-    ToDo(0, "create Project", true),
-    ToDo(1, "Add a To Do", true),
-    ToDo(2, "Complete All Your ToDos", false)
-  ];
+  // final todos = [
+  //   ToDo('0', "create Project", true),
+  //   ToDo('1', "Add a To Do", true),
+  //   ToDo('2', "Complete All Your ToDos", false)
+  // ];
+  @override
+  void initState() {
+    super.initState();
+    FirebaseApi.getTodo(_update);
+  }
+
+
+  var todos=[];
+
+  // FirebaseApi.getTodo();
+  void _update(List<ToDo> count) {
+    print("asdf");
+    setState(() => todos = count);
+  }
+
 
   createAlertDialogue(BuildContext context) {
+
     TextEditingController controllerText = TextEditingController();
     return showDialog(
         context: context,
@@ -28,11 +46,12 @@ class _HomeState extends State<Home> {
             actions: <Widget>[
               MaterialButton(
                 onPressed: () {
+                  ToDo tempToDo=ToDo("", controllerText.text.toString(), false);
+                  FirebaseApi.createTodo(tempToDo);
                   Navigator.of(context).pop();
                   setState(() {
                     print(todos.length);
-                    todos.add(ToDo(
-                        todos.length, controllerText.text.toString(), false));
+                    todos.add(tempToDo);
                     todos.sort((a, b) {
                       if (b.isDone) {
                         return -1;
@@ -52,13 +71,15 @@ class _HomeState extends State<Home> {
   GestureDetector createTodo(double width, ToDo temp) {
     return GestureDetector(
         onTap: () {
-          print(temp.key);
+
           setState(() {
-            // print();
-            todos
+
+            ToDo tempToDo=(todos
                 .elementAt(
-                    todos.indexWhere((element) => element.key == temp.key))
-                .isDone = !temp.isDone;
+                    todos.indexWhere((element) => element.key == temp.key)));
+            tempToDo.isDone=!tempToDo.isDone;
+            FirebaseApi.updateTodo(tempToDo);
+
             todos.sort((a, b) {
               if (b.isDone) {
                 return -1;

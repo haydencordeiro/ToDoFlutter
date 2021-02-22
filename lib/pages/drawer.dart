@@ -19,7 +19,7 @@ class NavigationDrawer extends StatelessWidget {
                   }),
           createDrawerBodyItem(
               icon: Icons.account_circle,
-              text: 'Login',
+              text: 'Profile',
               onTap: () => {
                     Navigator.pushReplacementNamed(context, pageRoutes.login),
                   }),
