@@ -3,6 +3,9 @@ import 'package:todotrial/models/todo.dart';
 
 class FirebaseApi {
   static String UserID = "";
+  static String UserName = "";
+  static String UserPhotoURL = "";
+  static bool UisLoggedIn = false;
 
   static Future<String> createTodo(ToDo todo) async {
     final docToDo = FirebaseFirestore.instance.collection(UserID).doc();
@@ -40,7 +43,7 @@ class FirebaseApi {
       l2.add(
           ToDo(l[i].data()['key'], l[i].data()['text'], l[i].data()['isDone']));
     }
-    print(l2);
+    // print(l2);
     update(l2);
   }
 }

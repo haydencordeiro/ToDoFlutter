@@ -22,18 +22,15 @@ class _HomeState extends State<Home> {
     FirebaseApi.getTodo(_update);
   }
 
-
-  var todos=[];
+  var todos = [];
 
   // FirebaseApi.getTodo();
   void _update(List<ToDo> count) {
-    print("asdf");
+    // print("asdf");
     setState(() => todos = count);
   }
 
-
   createAlertDialogue(BuildContext context) {
-
     TextEditingController controllerText = TextEditingController();
     return showDialog(
         context: context,
@@ -46,7 +43,8 @@ class _HomeState extends State<Home> {
             actions: <Widget>[
               MaterialButton(
                 onPressed: () {
-                  ToDo tempToDo=ToDo("", controllerText.text.toString(), false);
+                  ToDo tempToDo =
+                      ToDo("", controllerText.text.toString(), false);
                   FirebaseApi.createTodo(tempToDo);
                   Navigator.of(context).pop();
                   setState(() {
@@ -71,13 +69,10 @@ class _HomeState extends State<Home> {
   GestureDetector createTodo(double width, ToDo temp) {
     return GestureDetector(
         onTap: () {
-
           setState(() {
-
-            ToDo tempToDo=(todos
-                .elementAt(
-                    todos.indexWhere((element) => element.key == temp.key)));
-            tempToDo.isDone=!tempToDo.isDone;
+            ToDo tempToDo = (todos.elementAt(
+                todos.indexWhere((element) => element.key == temp.key)));
+            tempToDo.isDone = !tempToDo.isDone;
             FirebaseApi.updateTodo(tempToDo);
 
             todos.sort((a, b) {

@@ -24,7 +24,7 @@ class NavigationDrawer extends StatelessWidget {
                     Navigator.pushReplacementNamed(context, pageRoutes.login),
                   }),
           ListTile(
-            title: Text('App version 1.0.0'),
+            title: Text('App version 1.2.0'),
             onTap: () {},
           ),
         ],

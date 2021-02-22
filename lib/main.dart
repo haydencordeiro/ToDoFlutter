@@ -1,12 +1,15 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:todotrial/api/firebase_api.dart';
 import 'package:todotrial/pages/home.dart';
 import 'package:todotrial/pages/login.dart';
 import 'package:todotrial/routes/pageRoute.dart';
+import 'package:todotrial/utils/shared_pref.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await Shared_Pref.init();
   runApp(MyApp());
 }
 
@@ -21,7 +24,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginScreen(),
+      home: Container(
+        child: FirebaseApi.UisLoggedIn  ? Home() : LoginScreen(),
+      ),
       routes: {
         pageRoutes.home: (context) => Home(),
         pageRoutes.login: (context) => LoginScreen(),

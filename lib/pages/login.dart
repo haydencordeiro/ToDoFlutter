@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todotrial/api/firebase_api.dart';
 import 'package:todotrial/pages/drawer.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:todotrial/routes/pageRoute.dart';
+import 'package:todotrial/utils/shared_pref.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -11,6 +14,16 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _isLoggedIn = false;
+  void _update(bool count) {
+    // print("asdf");
+    setState(() => _isLoggedIn = count);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Shared_Pref.GetIsLogged(_update);
+  }
 
   GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
 
@@ -21,6 +34,15 @@ class _LoginScreenState extends State<LoginScreen> {
         _isLoggedIn = true;
       });
       FirebaseApi.UserID = _googleSignIn.currentUser.email;
+      FirebaseApi.UserName = _googleSignIn.currentUser.displayName;
+      FirebaseApi.UserPhotoURL = _googleSignIn.currentUser.photoUrl;
+      FirebaseApi.UisLoggedIn = true;
+
+      Shared_Pref.SetUID(
+          _googleSignIn.currentUser.email,
+          _googleSignIn.currentUser.displayName,
+          _googleSignIn.currentUser.photoUrl,
+          true);
       // print(FirebaseApi.UserID);
       Navigator.pushReplacementNamed(context, pageRoutes.home);
     } catch (err) {
@@ -33,6 +55,8 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       _isLoggedIn = false;
     });
+    FirebaseApi.UserID = "";
+    Shared_Pref.SetUID("", "", "", false);
   }
 
   @override
@@ -66,11 +90,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Image.network(
-                      _googleSignIn.currentUser.photoUrl,
+                      FirebaseApi.UserPhotoURL,
                       height: 50.0,
                       width: 50.0,
                     ),
-                    Text(_googleSignIn.currentUser.displayName),
+                    Text(FirebaseApi.UserName),
                     OutlineButton(
                       child: Text("Logout"),
                       onPressed: () {
