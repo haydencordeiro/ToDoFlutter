@@ -129,9 +129,11 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     // double height = MediaQuery.of(context).size.height;
-
+    final GlobalKey<ScaffoldState> _scaffoldKey =
+        new GlobalKey<ScaffoldState>();
     return SafeArea(
         child: Scaffold(
+            key: _scaffoldKey,
             drawer: NavigationDrawer(),
             backgroundColor: Color(0xffF4F4F5),
             appBar: AppBar(
@@ -141,7 +143,9 @@ class _HomeState extends State<Home> {
                   color: Color(0xff53A5D5),
                   size: 30.0,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  _scaffoldKey.currentState.openDrawer();
+                },
               ),
               elevation: 0.0,
               centerTitle: true,
