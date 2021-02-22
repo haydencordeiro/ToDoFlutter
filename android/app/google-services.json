@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "905164578932",
+    "project_id": "todotrialfl",
+    "storage_bucket": "todotrialfl.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:905164578932:android:259f16415f0d8f9b9a3121",
+        "android_client_info": {
+          "package_name": "com.hayden.flutter.todotrial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "905164578932-g776vm53eapg7tjbfu0jtovbh473p6is.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8jnEQG8dR70B_dbU1s2wGuO9HIp2B8ps"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "905164578932-g776vm53eapg7tjbfu0jtovbh473p6is.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
