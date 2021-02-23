@@ -21,10 +21,16 @@ This is a simple ToDo application.\
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
 
-### Screenshots
-
-Login Page
-![Home Page](/screenshots/ToDo.jpeg?raw=true)
-![Login Page](/screenshots/login.jpeg?raw=true)
-![Profile Page](/screenshots/profile.jpeg?raw=true)
-![AddToDo Page](/screenshots/addToDo.jpeg?raw=true)
+<ul>
+<li>
+![Home Page](/screenshots/ToDo.jpeg?raw=true) 
+</li>
+<li>
+![Login Page](/screenshots/login.jpeg?raw=true) 
+</li>
+<li>
+![Profile Page](/screenshots/profile.jpeg?raw=true) 
+</li>
+<li>
+![AddToDo Page](/screenshots/addToDo.jpeg?raw=true)</li>
+</ul>
