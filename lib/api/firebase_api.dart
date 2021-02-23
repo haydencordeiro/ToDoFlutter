@@ -17,7 +17,7 @@ class FirebaseApi {
   static updateTodo(ToDo todo) async {
     final docToDo =
         FirebaseFirestore.instance.collection(UserID).doc(todo.key).update({
-      "isDone": !todo.isDone,
+      "isDone": todo.isDone,
       "key": todo.key,
       "text": todo.text,
     }).then((_) {

@@ -1,16 +1,30 @@
-# todotrial
+# Project Title
 
-A new Flutter application.
+## Table of Contents
 
-## Getting Started
+- [About](#about)
+- [Getting Started](#getting_started)
 
-This project is a starting point for a Flutter application.
+## About <a name = "about"></a>
 
-A few resources to get you started if this is your first Flutter project:
+This is a simple ToDo application.\
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### Functions:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+    Google Login
+    Add ToDo
+    Mark As Done
+    Logout
+    View Profile
+
+## Getting Started <a name = "getting_started"></a>
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+
+### Screenshots
+
+Login Page
+![Home Page](/screenshots/ToDo.jpeg?raw=true)
+![Login Page](/screenshots/login.jpeg?raw=true)
+![Profile Page](/screenshots/profile.jpeg?raw=true)
+![AddToDo Page](/screenshots/addToDo.jpeg?raw=true)

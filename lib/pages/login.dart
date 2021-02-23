@@ -14,6 +14,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _isLoggedIn = false;
+  final GlobalKey<ScaffoldState> _scaffoldKey =
+  new GlobalKey<ScaffoldState>();
   void _update(bool count) {
     // print("asdf");
     setState(() => _isLoggedIn = count);
@@ -63,6 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
+      key: _scaffoldKey,
       drawer: NavigationDrawer(),
       backgroundColor: Color(0xffF4F4F5),
       appBar: AppBar(
@@ -72,7 +75,9 @@ class _LoginScreenState extends State<LoginScreen> {
             color: Color(0xff53A5D5),
             size: 30.0,
           ),
-          onPressed: () {},
+          onPressed: () {
+            _scaffoldKey.currentState.openDrawer();
+          },
         ),
         elevation: 0.0,
         centerTitle: true,
