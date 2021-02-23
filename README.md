@@ -8,6 +8,7 @@
 ## About <a name = "about"></a>
 
 This is a simple ToDo application.\
+Users can login and create todos and mark them as done.
 
 ### Functions:
 
@@ -16,6 +17,11 @@ This is a simple ToDo application.\
     Mark As Done
     Logout
     View Profile
+
+### TechStack:
+
+    Flutter
+    Firebase
 
 ## Getting Started <a name = "getting_started"></a>
 
